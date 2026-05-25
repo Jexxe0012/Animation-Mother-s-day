@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Feliz Día, Mi Amor!</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Dancing+Script:wght@700&display=swap');
+
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #ffc3a0 0%, #ffafbd 100%);
+            overflow: hidden;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            text-align: center;
+            max-width: 400px;
+            z-index: 10;
+            animation: fadeIn 2s ease-in-out;
+            border-top: 5px solid #ffcb05; /* Amarillo de la bandera 🇨🇴 */
+            border-bottom: 5px solid #0033a0; /* Azul 🇨🇴 */
+        }
+
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            color: #ce1126; /* Rojo 🇨🇴 */
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #444;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .highlight {
+            font-weight: 600;
+            color: #ce1126;
+        }
+
+        /* Elementos flotantes de fondo */
+        .floating-item {
+            position: absolute;
+            bottom: -50px;
+            animation: floatUp linear infinite;
+            opacity: 0.8;
+            z-index: 1;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0) rotate(0deg) scale(1); }
+            100% { transform: translateY(-110vh) rotate(360deg) scale(1.5); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h1>¡Feliz Día de la Madre!</h1>
+        <p>Para la mujer que ilumina mis días y que tiene un corazón gigante.</p>
+        <p>Admiro muchísimo la dedicación, la fuerza y todo el amor que le das a tu hijo todos los días. Eres una <span class="highlight">mamá excepcional</span> y una compañera increíble.</p>
+        <p>Que pases un día tan hermoso y especial como tú. 💛💙❤️</p>
+    </div>
+
+    <script>
+        function createFloatingElement() {
+            const item = document.createElement('div');
+            item.classList.add('floating-item');
+            
+            // Alternar entre corazones y mariposas amarillas
+            const isButterfly = Math.random() > 0.5;
+            item.innerHTML = isButterfly ? '🦋' : '💛';
+            
+            // Posición y tamaño aleatorio
+            item.style.left = Math.random() * 100 + 'vw';
+            item.style.fontSize = Math.random() * 20 + 15 + 'px';
+            
+            // Duración de la animación aleatoria entre 5 y 10 segundos
+            item.style.animationDuration = Math.random() * 5 + 5 + 's';
+            
+            document.body.appendChild(item);
+            
+            // Eliminar el elemento después de que salga de la pantalla para no saturar el DOM
+            setTimeout(() => {
+                item.remove();
+            }, 10000);
+        }
+
+        // Crear un nuevo elemento cada 400 milisegundos
+        setInterval(createFloatingElement, 400);
+    </script>
+</body>
+</html>
